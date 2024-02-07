@@ -1,5 +1,4 @@
-import axios from "axios"
-import {promise} from "ora";
+import axios from 'axios'
 
 const API_URL = 'http://localhost:3000'
 
@@ -20,7 +19,7 @@ const plainAxiosInstance = axios.create({
 })
 
 securedAxiosInstance.interceptors.request.use(config => {
-  const method = config.method.toUpperCase();
+  const method = config.method.toUpperCase()
   if (method !== 'OPTIONS' && method !== 'GET') {
     config.headers = {
       ...config.headers,
@@ -29,7 +28,7 @@ securedAxiosInstance.interceptors.request.use(config => {
   }
 
   return config
-});
+})
 
 securedAxiosInstance.interceptors.request.use(null, error => {
   if (error.response && error.response.config && error.response.config.status === 401) {
