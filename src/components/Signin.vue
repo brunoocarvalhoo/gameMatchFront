@@ -1,5 +1,3 @@
-<!-- Login.vue -->
-
 <template>
   <div class="login-container">
     <div class="login-form" style="margin-bottom: auto">
@@ -13,6 +11,10 @@
         <input type="password" id="password" v-model="password">
 
         <button type="submit">Login</button>
+
+        <div class="mb-6">
+          <router-link to="/signup" class="link-grey">Sign Up</router-link>
+        </div>
       </form>
     </div>
   </div>
@@ -36,7 +38,7 @@ export default {
   },
   methods: {
     signin () {
-      this.http.plain.post('/signin', { email: this.email, password: this.password })
+      this.plain.post('/signin', { email: this.email, password: this.password })
         .then(response => this.signinSuccesfull(response))
         .catch(error => this.signinFailed(error))
     },
@@ -47,10 +49,11 @@ export default {
         return
       }
 
+      console.log('aqui')
       localStorage.csrf = response.data.csrf
       localStorage.signedIn = true
       this.error = ''
-      this.$router.replace('/matchs')
+      this.$router.replace('/match')
     },
     signinFailed (error) {
       console.log('erro', error)
@@ -60,7 +63,7 @@ export default {
     },
     checkSignedIn () {
       if (localStorage.signedIn) {
-        this.$router.replace('/matchs')
+        this.$router.replace('/match')
       }
     }
   }
