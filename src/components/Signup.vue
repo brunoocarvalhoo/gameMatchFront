@@ -43,7 +43,6 @@ export default {
         .catch(error => this.signupFailed(error))
     },
     signupSuccesfull (response) {
-      console.log('here')
       if (!response.data.csrf) {
         this.signinFailed(response)
         return
@@ -55,7 +54,6 @@ export default {
       this.$router.replace('/match')
     },
     signupFailed (error) {
-      console.log('erro', error)
       this.error = (error.response && error.response.data && error.response.data.error) || 'Algo está errado'
       delete localStorage.csrf
       delete localStorage.signedIn
@@ -78,22 +76,10 @@ export default {
   justify-content: center;
 }
 
-.background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('/path/to/your/image.jpg') center/cover no-repeat;
-  filter: blur(5px); /* Optional: Apply a blur effect to the background */
-}
-
 .login-form {
   background: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-/* Add more styles as needed */
 </style>
