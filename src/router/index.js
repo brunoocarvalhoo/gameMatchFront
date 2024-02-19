@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Signin from '../components/Signin.vue'
 import Signup from '../components/Signup.vue'
-import Match from '../components/Matchs/Match.vue'
+import Match from '../components/Matchs/CreateMatch.vue'
 
 Vue.use(Router)
 
