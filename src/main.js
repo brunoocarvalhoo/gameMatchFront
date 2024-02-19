@@ -8,7 +8,7 @@ import { securedAxiosInstance, plainAxiosInstance } from './backend/axios'
 
 Vue.config.productionTip = false
 
-Vue.use(VueAxios,{
+Vue.use(VueAxios, {
   secured: securedAxiosInstance,
   plain: plainAxiosInstance
 })
